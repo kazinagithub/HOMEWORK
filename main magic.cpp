@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int main(){
-	int num[20][20],i,j,n,sum[10]={0},sum1[10]={0},sum2=0,sum3=0;
+	int num[20][20],i,j,n,sum=0,sum1=0,sum2=0,sum3=0;
 	cout<<"enter the number of rows and column ";
 	cin>>n;
 	cout<<"enter the matrix elements .......\n";
@@ -13,20 +13,22 @@ int main(){
 		cout<<endl;
 	}
 		for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			sum[i]=sum[i]+num[i][j];
-			sum1[i]=sum1[i]+num[j][i];
+			sum=sum+num[0][i];
 		}
-	}
+		for(j=0;j<n;j++){
+			
+			sum1=sum1+num[j][0];
+		}
+	
 	cout<<"MATRIX IS...."<<endl;
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
 			cout<<num[i][j]<<"   ";
 		}
-		cout<<sum[i]<<" "<<endl;
+		cout<<sum<<" "<<endl;
 	}
 	for(i=0;i<n;i++){
-		cout<<sum1[i]<<"  ";
+		cout<<sum1<<"  ";
 	}
 		cout<<" "<<endl;
 		for(i=0;i<n;i++){
@@ -40,11 +42,12 @@ int main(){
 		}
 		}
 		cout<<"Right diagonal is "<<sum2<<" and "<<"Left diagonal is "<<sum3<<endl;
-	if (sum[i] == sum1[i] && sum2 == sum3) {
-    cout << "True";
+	if ((sum == sum1) && (sum1 == sum3)){
+    cout << "is a magic square matrix!!!";
           }
 else {
-    cout << "False";
-    }   
+    cout << "is not magic square matrix!!!";
+    }  
+	 
 	return 0;
  }
