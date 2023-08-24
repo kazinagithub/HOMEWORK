@@ -1,62 +1,50 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 int main(){
-    string mun;
-    string mune[]={"j","e","r","o","m","e"};
-    string munez[]={"_","_","_","_","_","_"};
-    string j;
-    int r=1;
-    int b=0;
-while (r<=9)
-{
-    bool match=true;
-    bool correctgues=false;
-    cout<<"\n\n\tenter the character\t:";
-    cin>>j;
-    for(int i = 0; i <= 5;i++){
-        if(j == mune[i]){
-            munez[i] = j;
-            correctgues=true;
-        }    
-    }
-    if(correctgues){
-        cout<<"\n\tcorrectgues"<<endl;
-    }
-    else{
-        cout<<"incorrect"<<endl;
-        b += 1;
-    }
-    if(b==3){
-        cout<<"\n\tyou are out of the game\n\n";
-        break;
-    }
-    for (int i = 0; i < 6; i++)
-    {
-        cout<<munez[i];
-    }
-    
-    for (int i = 0; i < 6; i++)
-    {
-        if (mune[i] != munez[i]){
-            match = false;
-        }
-        
-    }
-    if (match)
-    {
-        cout<<"\n\n\tWow u did it\n\n"<<endl;
-        for (int c = 0; c < 6; c++){
-            cout<<"\t"<<munez[c];
-        }
-         cout<<"\n\n";
-        break;
-    }
-   
-    r++;
-
-    
-}
-return 0;
-
-}
-
+	int num[20][20],i,j,n,sum[10]={0},sum1[10]={0},sum2=0,sum3=0;
+	cout<<"enter the number of rows and column ";
+	cin>>n;
+	cout<<"enter the matrix elements .......\n";
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cout<<"enter the number in the pocket["<<i<<"]["<<j<<"]";
+			cin>>num[i][j];
+		}
+		cout<<endl;
+	}
+		for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			sum[i]=sum[i]+num[i][j];
+			sum1[i]=sum1[i]+num[j][i];
+		}
+	}
+	cout<<"MATRIX IS...."<<endl;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cout<<num[i][j]<<"   ";
+		}
+		cout<<sum[i]<<" "<<endl;
+	}
+	for(i=0;i<n;i++){
+		cout<<sum1[i]<<"  ";
+	}
+		cout<<" "<<endl;
+		for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(i==j){
+				sum2=sum2+num[i][j];
+			}
+			if(i+j==n-1){
+				sum3=sum3+num[i][j];
+			}
+		}
+		}
+		cout<<"Right diagonal is "<<sum2<<" and "<<"Left diagonal is "<<sum3<<endl;
+	if (sum[i] == sum1[i] && sum2 == sum3) {
+    cout << "True";
+          }
+else {
+    cout << "False";
+    }   
+	return 0;
+ }
